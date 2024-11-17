@@ -1,7 +1,7 @@
 body{
     text-align: center;
     /* background-color: #99d39b; */
-    background-image: linear-gradient(rgb(35, 36, 35), #99d39b);
+    background-image: linear-gradient(to bottom right,#acb334, #fab733, #ff8715);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
