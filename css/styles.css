@@ -1,6 +1,6 @@
 body{
     text-align: center;
-    background-color: #cefad0;
+    background-color: #99d39b;
 }
 
 .logo{
@@ -11,7 +11,7 @@ body{
 }
 
 .title {
-    background-image: linear-gradient(rgb(35, 36, 35), #cefad0);
+    background-image: linear-gradient(rgb(35, 36, 35), #99d39b);
     padding: 2rem;
   }
 
@@ -23,7 +23,7 @@ body{
     padding: 4rem;
     width: 1000px;
     height: 400px;
-    background-color: lightblue; 
+    background-color: rgb(254, 254, 254); 
     border-radius: 0%;
     position: relative;
     margin-left: auto;
@@ -31,6 +31,12 @@ body{
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
+
+  /* Override Bootstrap's btn-success */
+.btn-success {
+  background-color: #000000;  /* Choose your preferred color */
+  border: none;               /* Remove the border */
+}
 
 h1 {
     font-size: 8rem;
@@ -47,7 +53,7 @@ h3 {
 }
 
 .bottom-container {
-    background-color: lightgreen;
+    background-color: #99d39b;
     padding: 50px;
   }
 
@@ -58,7 +64,7 @@ h3 {
   }
   
 .footer-link {
-  color: green;
+  color: rgb(0, 0, 0);
   margin-right: 25px;
   margin-left: 25px;
   font-family: 'Montserrat', sans-serif;
