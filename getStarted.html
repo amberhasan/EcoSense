@@ -1,44 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoSense - Get Started</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            line-height: 1.6;
-        }
-        .contact {
-            margin-top: 20px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #007bff;
+        text-align: center;
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      .button-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .contact {
+        margin-top: 20px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .graph-results {
+        margin-top: 30px;
+        background-color: #e0f7fa;
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      .building-card {
+        background-color: #e0f7fa;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      .building-card p {
+        margin: 5px 0;
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
+    <!-- Main Container -->
     <div class="container">
-        <h1>About Us</h1>
-        <p>Welcome to our website! We are dedicated to providing the best service possible. Our team is passionate about what we do, and we strive to exceed your expectations.</p>
-        <p>Our mission is to create value for our customers through innovation and excellence. We believe in building long-term relationships based on trust and integrity.</p>
-        <div class="contact">
-            <h2>Contact Us</h2>
-            <p>Email: info@example.com</p>
-            <p>Phone: +1-234-567-8901</p>
-        </div>
+      <!-- Title and Overview -->
+      <h1>EcoSense</h1>
+      <p>
+        Welcome to EcoSense! Our mission is to optimize energy efficiency using
+        advanced data analysis. We believe in sustainability and innovation for
+        a greener future.
+      </p>
+
+      <!-- About Us Section -->
+      <h2>About Us</h2>
+      <p>
+        We are dedicated to providing the best service possible. Our team is
+        passionate about what we do, and we strive to exceed your expectations.
+      </p>
+      <p>
+        Our mission is to create value for our customers through innovation and
+        excellence. We believe in building long-term relationships based on
+        trust and integrity.
+      </p>
+      <div class="contact">
+        <h3>Contact Us</h3>
+        <p>Email: info@example.com</p>
+        <p>Phone: +1-234-567-8901</p>
+      </div>
+
+      <!-- Button to Fetch Graph Data -->
+      <div class="button-container">
+        <button onclick="fetchGraphData()">Get Energy Insights</button>
+      </div>
+
+      <!-- Display Graph Data Here -->
+      <div id="data-container" class="graph-results"></div>
     </div>
-</body>
+
+    <!-- JavaScript to Fetch Data from FastAPI -->
+    <script>
+      async function fetchGraphData() {
+        try {
+          // Fetch data from the FastAPI endpoint
+          const response = await fetch("http://localhost:8000/graphx-insights");
+          const data = await response.json();
+
+          const container = document.getElementById("data-container");
+          container.innerHTML = ""; // Clear previous content
+
+          if (data.length > 0) {
+            data.forEach((item) => {
+              const div = document.createElement("div");
+              div.className = "building-card";
+              div.innerHTML = `
+                            <p><strong>Building ID:</strong> ${item.id}</p>
+                            <p><strong>PageRank:</strong> ${item.pagerank.toFixed(
+                              2
+                            )}</p>
+                            <hr>
+                        `;
+              container.appendChild(div);
+            });
+          } else {
+            container.innerHTML = "<p>No data available</p>";
+          }
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          document.getElementById("data-container").innerHTML =
+            "<p>Error loading data. Please try again later.</p>";
+        }
+      }
+    </script>
+  </body>
 </html>
