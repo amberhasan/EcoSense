@@ -14,7 +14,6 @@
         padding: 0;
         background-color: #f4f4f4;
       }
-
       .container {
         max-width: 800px;
         margin: auto;
@@ -23,22 +22,18 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
       }
-
       h1 {
         color: #007bff;
         text-align: center;
       }
-
       p {
         line-height: 1.6;
         text-align: center;
       }
-
       .button-container {
         text-align: center;
         margin-top: 20px;
       }
-
       button {
         padding: 10px 20px;
         background-color: #007bff;
@@ -46,118 +41,110 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        font-size: 1rem;
       }
-
       button:hover {
         background-color: #0056b3;
       }
-
-      .graph-results {
+      .chart-container {
         margin-top: 30px;
-        background-color: #e0f7fa;
-        padding: 15px;
-        border-radius: 5px;
+        text-align: center;
       }
-
-      .building-card {
-        background-color: #e0f7fa;
-        margin: 10px 0;
-        padding: 15px;
-        border-radius: 5px;
-        border: 1px solid #007bff;
-      }
-
-      .building-card p {
-        margin: 5px 0;
-      }
-
       .error-message {
         color: red;
         text-align: center;
-        margin-top: 20px;
       }
-
       .loading-message {
         text-align: center;
         font-style: italic;
       }
     </style>
   </head>
-
   <body>
-    <!-- Main Container -->
     <div class="container">
-      <!-- Title and Overview -->
       <h1>EcoSense</h1>
       <p>
         Welcome to EcoSense! Our mission is to optimize energy efficiency using
-        advanced data analysis. We believe in sustainability and innovation for
-        a greener future.
+        advanced data analysis.
       </p>
 
-      <!-- Button to Fetch Graph Data -->
+      <!-- Button to Fetch Data and Generate Chart -->
       <div class="button-container">
-        <button onclick="fetchGraphData()">Get Energy Insights</button>
+        <button onclick="fetchAndDrawChart()">Get Energy Insights</button>
       </div>
 
-      <!-- Display Graph Data Here -->
-      <div id="data-container" class="graph-results"></div>
+      <!-- Container for Google Chart -->
+      <div id="chart_div" class="chart-container"></div>
     </div>
 
-    <!-- JavaScript to Fetch Data from FastAPI -->
+    <!-- Load Google Charts Library -->
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+
     <script>
-      async function fetchGraphData() {
-        const container = document.getElementById("data-container");
-        container.innerHTML = "<p class='loading-message'>Loading data...</p>";
+      // Load Google Charts library
+      google.charts.load("current", { packages: ["corechart"] });
+
+      async function fetchAndDrawChart() {
+        const chartContainer = document.getElementById("chart_div");
+        chartContainer.innerHTML =
+          "<p class='loading-message'>Loading data...</p>";
 
         try {
-          // Fetch data from the FastAPI endpoint
           const response = await fetch("http://localhost:8000/graphx-insights");
 
-          // Check if the response is OK
           if (!response.ok) {
-            throw new Error(
-              `Network response was not OK: ${response.statusText}`
-            );
+            throw new Error("Network response was not OK");
           }
 
           const data = await response.json();
 
-          // Clear the container before displaying new data
-          container.innerHTML = "";
+          // Clear the chart container
+          chartContainer.innerHTML = "";
 
           if (data && data.length > 0) {
-            // Loop through each item and display it
-            data.forEach((item) => {
-              const div = document.createElement("div");
-              div.className = "building-card";
-              div.innerHTML = `
-                <p><strong>Building ID:</strong> ${item.building_id}</p>
-                <p><strong>PageRank:</strong> ${item.pagerank.toFixed(2)}</p>
-                <p><strong>Energy Consumption:</strong> ${
-                  item.energy_consumption
-                } kWh</p>
-                <p><strong>Building Type:</strong> ${item.building_type}</p>
-                <p><strong>Efficiency Score:</strong> ${
-                  item.efficiency_score
-                }</p>
-                <p><strong>Recommendations:</strong> ${item.recommendations}</p>
-                <p><strong>Last Updated:</strong> ${new Date(
-                  item.last_updated
-                ).toLocaleString()}</p>
-                <hr>
-              `;
-              container.appendChild(div);
-            });
+            drawChart(data);
           } else {
-            container.innerHTML = "<p>No data available</p>";
+            chartContainer.innerHTML = "<p>No data available</p>";
           }
         } catch (error) {
           console.error("Error fetching data:", error);
-          container.innerHTML =
+          chartContainer.innerHTML =
             "<p class='error-message'>Error loading data. Please try again later.</p>";
         }
+      }
+
+      // Function to draw Google Chart
+      function drawChart(data) {
+        const formattedData = [
+          ["Building ID", "Energy Consumption (kWh)", "Efficiency Score"],
+        ];
+
+        // Convert fetched data into Google Charts format
+        data.forEach((item) => {
+          formattedData.push([
+            `Building ${item.building_id}`,
+            item.energy_consumption,
+            item.efficiency_score,
+          ]);
+        });
+
+        const dataTable = google.visualization.arrayToDataTable(formattedData);
+
+        const options = {
+          title: "Building Energy Efficiency",
+          hAxis: { title: "Building ID" },
+          vAxis: { title: "Metrics" },
+          seriesType: "bars",
+          series: { 1: { type: "line" } },
+          colors: ["#007bff", "#e0440e"],
+        };
+
+        const chart = new google.visualization.ComboChart(
+          document.getElementById("chart_div")
+        );
+        chart.draw(dataTable, options);
       }
     </script>
   </body>
