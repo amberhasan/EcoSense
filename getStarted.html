@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- My Own Style Sheet -->
 <link rel="stylesheet" href="css/styles.css" />
 
 <html lang="en">
@@ -22,19 +21,7 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
       }
-      h1 {
-        color: #007bff;
-        text-align: center;
-      }
-      p {
-        line-height: 1.6;
-        text-align: center;
-      }
       .image-container {
-        text-align: center;
-        margin-top: 20px;
-      }
-      .button-container {
         text-align: center;
         margin-top: 20px;
       }
@@ -50,6 +37,10 @@
       }
       .building-card p {
         margin: 5px 0;
+      }
+      .button-container {
+        text-align: center;
+        margin-top: 20px;
       }
       button {
         padding: 10px 20px;
@@ -70,25 +61,11 @@
         color: red;
         text-align: center;
       }
-      .loading-message {
-        text-align: center;
-        font-style: italic;
-      }
     </style>
   </head>
   <body>
-    <a href="home.html" target="blank">
-      <img class="logo" src="images/EcoSense.png" alt="EcoSense Logo" />
-    </a>
-
     <div class="container">
       <h1>EcoSense</h1>
-      <p>
-        Welcome to EcoSense! Our mission is to optimize energy efficiency using
-        advanced data analysis.
-      </p>
-
-      <!-- Add Image Here -->
       <div class="image-container">
         <img
           src="images/Energy-efficiency.jpg"
@@ -97,30 +74,22 @@
           style="max-width: 600px; border-radius: 10px"
         />
       </div>
-
-      <!-- Data Display Section -->
       <div id="data-container" class="data-container"></div>
 
-      <!-- Button to Fetch Data and Generate Chart -->
+      <!-- Button to Fetch Data and Generate Charts -->
       <div class="button-container">
-        <button onclick="fetchAndDrawChart()">Get Energy Insights</button>
+        <button onclick="fetchAndDrawCharts()">Get Energy Insights</button>
       </div>
 
-      <!-- Container for Google Chart -->
-      <div id="chart_div" class="chart-container"></div>
+      <!-- Containers for Google Charts -->
+      <div id="chart_div1" class="chart-container"></div>
+      <div id="chart_div2" class="chart-container"></div>
     </div>
 
-    <!-- Load Google Charts Library -->
-    <script
-      type="text/javascript"
-      src="https://www.gstatic.com/charts/loader.js"
-    ></script>
-
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-      // Load Google Charts library
       google.charts.load("current", { packages: ["corechart"] });
 
-      // Fetch and display data in the blue boxes
       async function fetchAndDisplayData() {
         const dataContainer = document.getElementById("data-container");
 
@@ -131,28 +100,30 @@
           const data = await response.json();
           dataContainer.innerHTML = "";
 
-          if (data && data.length > 0) {
-            data.forEach((item) => {
-              const div = document.createElement("div");
-              div.className = "building-card";
-              div.innerHTML = `
-                <p><strong>Building ID:</strong> ${item.building_id}</p>
-                <p><strong>PageRank:</strong> ${item.pagerank.toFixed(2)}</p>
-                <p><strong>Energy Consumption:</strong> ${
-                  item.energy_consumption
-                } kWh</p>
-                <p><strong>Building Type:</strong> ${item.building_type}</p>
-                <p><strong>Efficiency Score:</strong> ${
-                  item.efficiency_score
-                }</p>
-                <p><strong>Recommendations:</strong> ${item.recommendations}</p>
-                <hr>
-              `;
-              dataContainer.appendChild(div);
-            });
-          } else {
-            dataContainer.innerHTML = "<p>No data available</p>";
-          }
+          data.forEach((item) => {
+            const div = document.createElement("div");
+            div.className = "building-card";
+            div.innerHTML = `
+                        <p><strong>Building ID:</strong> ${item.building_id}</p>
+                        <p><strong>PageRank:</strong> ${item.pagerank.toFixed(
+                          2
+                        )}</p>
+                        <p><strong>Energy Consumption:</strong> ${
+                          item.energy_consumption
+                        } kWh</p>
+                        <p><strong>Building Type:</strong> ${
+                          item.building_type
+                        }</p>
+                        <p><strong>Efficiency Score:</strong> ${
+                          item.efficiency_score
+                        }</p>
+                        <p><strong>Recommendations:</strong> ${
+                          item.recommendations
+                        }</p>
+                        <hr>
+                    `;
+            dataContainer.appendChild(div);
+          });
         } catch (error) {
           console.error("Error fetching data:", error);
           dataContainer.innerHTML =
@@ -160,35 +131,20 @@
         }
       }
 
-      // Fetch data initially on page load
-      fetchAndDisplayData();
-
-      // Function to draw Google Chart
-      async function fetchAndDrawChart() {
-        const chartContainer = document.getElementById("chart_div");
-        chartContainer.innerHTML =
-          "<p class='loading-message'>Loading data...</p>";
-
+      async function fetchAndDrawCharts() {
         try {
           const response = await fetch("http://localhost:8000/graphx-insights");
           if (!response.ok) throw new Error("Network response was not OK");
 
           const data = await response.json();
-          chartContainer.innerHTML = "";
-
-          if (data && data.length > 0) {
-            drawChart(data);
-          } else {
-            chartContainer.innerHTML = "<p>No data available</p>";
-          }
+          drawEnergyConsumptionChart(data);
+          drawPageRankChart(data);
         } catch (error) {
           console.error("Error fetching data:", error);
-          chartContainer.innerHTML =
-            "<p class='error-message'>Error loading data. Please try again later.</p>";
         }
       }
 
-      function drawChart(data) {
+      function drawEnergyConsumptionChart(data) {
         const formattedData = [
           ["Building ID", "Energy Consumption (kWh)", "Efficiency Score"],
         ];
@@ -202,19 +158,43 @@
 
         const dataTable = google.visualization.arrayToDataTable(formattedData);
         const options = {
-          title: "Building Energy Efficiency",
-          hAxis: { title: "Building ID" },
-          vAxis: { title: "Metrics" },
+          title: "Building Energy Consumption vs Efficiency",
+          hAxis: { title: "Building ID", textStyle: { fontSize: 14 } },
+          vAxis: { title: "Metrics", textStyle: { fontSize: 14 } },
           seriesType: "bars",
           series: { 1: { type: "line" } },
+          legend: { position: "top", textStyle: { fontSize: 12 } },
           colors: ["#007bff", "#e0440e"],
         };
 
         const chart = new google.visualization.ComboChart(
-          document.getElementById("chart_div")
+          document.getElementById("chart_div1")
         );
         chart.draw(dataTable, options);
       }
+
+      function drawPageRankChart(data) {
+        const formattedData = [["Building ID", "PageRank"]];
+        data.forEach((item) => {
+          formattedData.push([`Building ${item.building_id}`, item.pagerank]);
+        });
+
+        const dataTable = google.visualization.arrayToDataTable(formattedData);
+        const options = {
+          title: "Building PageRank Analysis",
+          hAxis: { title: "Building ID", textStyle: { fontSize: 14 } },
+          vAxis: { title: "PageRank", textStyle: { fontSize: 14 } },
+          legend: { position: "top", textStyle: { fontSize: 12 } },
+          colors: ["#34a853"],
+        };
+
+        const chart = new google.visualization.ColumnChart(
+          document.getElementById("chart_div2")
+        );
+        chart.draw(dataTable, options);
+      }
+
+      fetchAndDisplayData();
     </script>
   </body>
 </html>
