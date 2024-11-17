@@ -12,6 +12,28 @@ body{
     left: 5%;
 }
 
+.logo_sm{
+    width: 50px;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevent additional spacing */
+}
+
+.chatbot_btn{
+    margin: 0;
+    border: none;
+    padding: 0;
+
+    width: fit-content;
+    height: fit-content;
+    display: inline-flex; /* Ensures it wraps tightly around the image */
+    align-items: center;
+    justify-content: center;
+}
+
+.card-body{
+    padding: 0;
+}
+
 .title {
     padding: 2rem;
     background-size: cover; /* Ensure gradient fits */
