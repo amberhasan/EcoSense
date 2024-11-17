@@ -1,6 +1,8 @@
 body{
     text-align: center;
-    background-color: #99d39b;
+    /* background-color: #99d39b; */
+    background-image: linear-gradient(rgb(35, 36, 35), #99d39b);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .logo{
@@ -11,9 +13,17 @@ body{
 }
 
 .title {
-    background-image: linear-gradient(rgb(35, 36, 35), #99d39b);
     padding: 2rem;
+    background-size: cover; /* Ensure gradient fits */
+    background-repeat: no-repeat;
   }
+
+.title h1 {
+    font-family: 'Roboto', sans-serif;  /* Apply the new font */
+    font-size: 8rem;  /* Adjust the size of the title */
+    font-weight: bold;  /* Make the font bold */
+    color: #111111;  /* Optional: Change the color of the text */
+}
 
 .content{
     padding: 1rem;
@@ -21,29 +31,42 @@ body{
 
 .bubble {
     padding: 4rem;
-    width: 1000px;
-    height: 400px;
+    width: 700px;
+    height: 350px;
     background-color: rgb(254, 254, 254); 
-    border-radius: 0%;
+    border-radius: 8%;
     position: relative;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    font-family: 'Roboto', sans-serif;
+    border: 2px solid #000000;
   }
 
   /* Override Bootstrap's btn-success */
 .btn-success {
   background-color: #000000;  /* Choose your preferred color */
+  font-weight: bold; 
   border: none;               /* Remove the border */
 }
 
 h1 {
-    font-size: 8rem;
+    font-size: 6rem;
+    font-family: 'Roboto', sans-serif; /* Apply the same font or a different one */
+    color: #333; /* Optional: Change the color */
+}
+
+.second {
+  margin-bottom: -2rem; /* Reduce space between "Overview" and the bubble */
 }
 
 h2 {
-    font-size: 4rem;
+    font-size: 3rem;
+    font-family: 'Roboto', sans-serif; /* Apply the same font or a different one */
+    color: #000000; /* Optional: Change the color */
+    padding-left: .5rem;
+    padding-right: .5rem;
 }
 
 h3 {
@@ -53,12 +76,12 @@ h3 {
 }
 
 .bottom-container {
-    background-color: #99d39b;
+    background-color: #eff5f0;
     padding: 50px;
   }
 
 .copyright {
-  color: #EAF6F6;
+  color: #000000;
   margin-top: 20px;
   font-size: 0.75rem;
   }
