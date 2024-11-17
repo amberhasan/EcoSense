@@ -11,7 +11,7 @@
     <link rel="icon" href="images/logo_sm.png">
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Roboto", sans-serif;
         margin: 0;
         padding: 0;
         background-color: #f4f4f4;
@@ -20,9 +20,13 @@
         max-width: 800px;
         margin: auto;
         padding: 20px;
-        background-color: #fff;
+        background-color: #ffffff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
+      }
+      h1 {
+        color: #34a853;
+        text-align: center;
       }
       .image-container {
         text-align: center;
@@ -32,11 +36,12 @@
         margin-top: 30px;
       }
       .building-card {
-        background-color: #e0f7fa;
+        background-color: #d4edda;
         margin: 10px 0;
         padding: 15px;
-        border-radius: 5px;
-        border: 1px solid #007bff;
+        border-radius: 8px;
+        border: 1px solid #28a745;
+        color: #155724;
       }
       .building-card p {
         margin: 5px 0;
@@ -47,14 +52,19 @@
       }
       button {
         padding: 10px 20px;
-        background-color: #007bff;
+        background-color: #000000;
         color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        font-size: 16px;
+        font-weight: bold
+        transition: background-color 0.3s ease;
       }
+
       button:hover {
-        background-color: #0056b3;
+        background-color: #000000;
+        font-weight: bold
       }
       .chart-container {
         margin-top: 30px;
@@ -69,6 +79,8 @@
   <body>
     <div class="container">
       <h1>EcoSense</h1>
+
+      <!-- Image Section -->
       <div class="image-container">
         <img
           src="images/Energy-efficiency.jpg"
@@ -77,6 +89,8 @@
           style="max-width: 600px; border-radius: 10px"
         />
       </div>
+
+      <!-- Data Display Section -->
       <div id="data-container" class="data-container"></div>
 
       <!-- Button to Fetch Data and Generate Charts -->
@@ -107,24 +121,16 @@
             const div = document.createElement("div");
             div.className = "building-card";
             div.innerHTML = `
-                        <p><strong>Building ID:</strong> ${item.building_id}</p>
-                        <p><strong>PageRank:</strong> ${item.pagerank.toFixed(
-                          2
-                        )}</p>
-                        <p><strong>Energy Consumption:</strong> ${
-                          item.energy_consumption
-                        } kWh</p>
-                        <p><strong>Building Type:</strong> ${
-                          item.building_type
-                        }</p>
-                        <p><strong>Efficiency Score:</strong> ${
-                          item.efficiency_score
-                        }</p>
-                        <p><strong>Recommendations:</strong> ${
-                          item.recommendations
-                        }</p>
-                        <hr>
-                    `;
+              <p><strong>Building ID:</strong> ${item.building_id}</p>
+              <p><strong>PageRank:</strong> ${item.pagerank.toFixed(2)}</p>
+              <p><strong>Energy Consumption:</strong> ${
+                item.energy_consumption
+              } kWh</p>
+              <p><strong>Building Type:</strong> ${item.building_type}</p>
+              <p><strong>Efficiency Score:</strong> ${item.efficiency_score}</p>
+              <p><strong>Recommendations:</strong> ${item.recommendations}</p>
+              <hr>
+            `;
             dataContainer.appendChild(div);
           });
         } catch (error) {
@@ -162,12 +168,10 @@
         const dataTable = google.visualization.arrayToDataTable(formattedData);
         const options = {
           title: "Building Energy Consumption vs Efficiency",
-          hAxis: { title: "Building ID", textStyle: { fontSize: 14 } },
-          vAxis: { title: "Metrics", textStyle: { fontSize: 14 } },
-          seriesType: "bars",
-          series: { 1: { type: "line" } },
-          legend: { position: "top", textStyle: { fontSize: 12 } },
-          colors: ["#007bff", "#e0440e"],
+          hAxis: { title: "Building ID" },
+          vAxis: { title: "Metrics" },
+          legend: { position: "top" },
+          colors: ["#8b4513", "#e0440e"],
         };
 
         const chart = new google.visualization.ComboChart(
@@ -185,10 +189,9 @@
         const dataTable = google.visualization.arrayToDataTable(formattedData);
         const options = {
           title: "Building PageRank Analysis",
-          hAxis: { title: "Building ID", textStyle: { fontSize: 14 } },
-          vAxis: { title: "PageRank", textStyle: { fontSize: 14 } },
-          legend: { position: "top", textStyle: { fontSize: 12 } },
-          colors: ["#34a853"],
+          hAxis: { title: "Building ID" },
+          vAxis: { title: "PageRank" },
+          colors: ["#8b4513"],
         };
 
         const chart = new google.visualization.ColumnChart(
