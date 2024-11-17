@@ -1,2 +1,19 @@
+# Ignore Kafka installation directory
 kafka_*
 /kafka/
+
+# Ignore Python virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Ignore downloaded libraries and wheel files
+*.whl
+
+# Ignore log files and temporary files
+*.log
+*.tmp
+*.bak
+
+# Ignore MacOS system files
+.DS_Store
