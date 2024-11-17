@@ -11,7 +11,7 @@ body{
 }
 
 .title {
-    background-image: linear-gradient(green, #cefad0);
+    background-image: linear-gradient(rgb(35, 36, 35), #cefad0);
     padding: 2rem;
   }
 
