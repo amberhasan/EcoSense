@@ -1,9 +1,46 @@
 body{
-    background: #cefad0;
+    text-align: center;
+}
+
+.title {
+    background-image: linear-gradient(green, #cefad0);
+    padding: 2rem;
+  }
+
+.content {
+    padding: 1rem;
+    background-color: #cefad0;
 }
 
 h1 {
-    padding: 2rem;
-    text-align: center;
     font-size: 8rem;
 }
+
+h2 {
+    font-size: 4rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.bottom-container {
+    background-color: lightgreen;
+    padding: 50px;
+  }
+
+.copyright {
+  color: #EAF6F6;
+  margin-top: 20px;
+  font-size: 0.75rem;
+  }
+  
+.footer-link {
+  color: green;
+  margin-right: 25px;
+  margin-left: 25px;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  }
