@@ -9,8 +9,8 @@ git push
 git command to stash and get the main branch code then unstash:
 
 git fetch origin
-git reset --hard origin/main 
 git stash
+git reset --hard origin/main 
 git stash pop
 
 how to run python server for graph: python3 api_server.py

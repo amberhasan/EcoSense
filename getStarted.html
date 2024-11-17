@@ -169,53 +169,105 @@
         }
       }
 
-      function drawEnergyConsumptionChart(data) {
-        const formattedData = [
-          ["Building ID", "Energy Consumption (kWh)", "Efficiency Score"],
-        ];
-        data.forEach((item) => {
-          formattedData.push([
-            `Building ${item.building_id}`,
-            item.energy_consumption,
-            item.efficiency_score,
-          ]);
-        });
+    //   function drawEnergyConsumptionChart(data) {
+    //     const formattedData = [
+    //       ["Building ID", "Energy Consumption (kWh)", "Efficiency Score"],
+    //     ];
+    //     data.forEach((item) => {
+    //       formattedData.push([
+    //         `Building ${item.building_id}`,
+    //         item.energy_consumption,
+    //         item.efficiency_score,
+    //       ]);
+    //     });
 
-        const dataTable = google.visualization.arrayToDataTable(formattedData);
-        const options = {
-          title: "Building Energy Consumption vs Efficiency",
-          hAxis: { title: "Building ID" },
-          vAxis: { title: "Metrics" },
-          legend: { position: "top" },
-          colors: ["#8b4513", "#e0440e"],
-        };
+    //     const dataTable = google.visualization.arrayToDataTable(formattedData);
+    //     const options = {
+    //       title: "Building Energy Consumption vs Efficiency",
+    //       hAxis: { title: "Building ID" },
+    //       vAxis: { title: "Metrics" },
+    //       legend: { position: "top" },
+    //       colors: ["#8b4513", "#e0440e"],
+    //     };
 
-        const chart = new google.visualization.ComboChart(
-          document.getElementById("chart_div1")
-        );
-        chart.draw(dataTable, options);
-      }
+    //     const chart = new google.visualization.ComboChart(
+    //       document.getElementById("chart_div1")
+    //     );
+    //     chart.draw(dataTable, options);
+    //   }
 
-      function drawPageRankChart(data) {
-        const formattedData = [["Building ID", "PageRank"]];
-        data.forEach((item) => {
-          formattedData.push([`Building ${item.building_id}`, item.pagerank]);
-        });
+    //   function drawPageRankChart(data) {
+    //     const formattedData = [["Building ID", "PageRank"]];
+    //     data.forEach((item) => {
+    //       formattedData.push([`Building ${item.building_id}`, item.pagerank]);
+    //     });
 
-        const dataTable = google.visualization.arrayToDataTable(formattedData);
-        const options = {
-          title: "Building PageRank Analysis",
-          hAxis: { title: "Building ID" },
-          vAxis: { title: "PageRank" },
-          colors: ["#8b4513"],
-        };
+    //     const dataTable = google.visualization.arrayToDataTable(formattedData);
+    //     const options = {
+    //       title: "Building PageRank Analysis",
+    //       hAxis: { title: "Building ID" },
+    //       vAxis: { title: "PageRank" },
+    //       colors: ["#8b4513"],
+    //     };
 
-        const chart = new google.visualization.ColumnChart(
-          document.getElementById("chart_div2")
-        );
-        chart.draw(dataTable, options);
-      }
+    //     const chart = new google.visualization.ColumnChart(
+    //       document.getElementById("chart_div2")
+    //     );
+    //     chart.draw(dataTable, options);
+    //   }
+    function drawEnergyConsumptionChart(data) {
+  const formattedData = [
+    ["Building ID", "Energy Consumption (kWh)", "Efficiency Score"],
+  ];
+  data.forEach((item) => {
+    formattedData.push([
+      `Building ${item.building_id}`,
+      item.energy_consumption,
+      item.efficiency_score,
+    ]);
+  });
 
+  const dataTable = google.visualization.arrayToDataTable(formattedData);
+  const options = {
+    title: "Building Energy Consumption vs Efficiency",
+    hAxis: { title: "Building ID", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
+    vAxis: { title: "Metrics", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
+    legend: { position: "top", textStyle: { color: "black" } },
+    colors: ["#000000", "#555555"], // Black and dark gray for bars/lines
+    backgroundColor: "white", // White background
+    titleTextStyle: { color: "black" }, // Black title
+  };
+
+  const chart = new google.visualization.ComboChart(
+    document.getElementById("chart_div1")
+  );
+  chart.draw(dataTable, options);
+}
+
+function drawPageRankChart(data) {
+  const formattedData = [["Building ID", "PageRank"]];
+  data.forEach((item) => {
+    formattedData.push([`Building ${item.building_id}`, item.pagerank]);
+  });
+
+  const dataTable = google.visualization.arrayToDataTable(formattedData);
+  const options = {
+    title: "Building PageRank Analysis",
+    hAxis: { title: "Building ID", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
+    vAxis: { title: "PageRank", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
+    legend: { position: "none" },
+    colors: ["#000000"], // Black for bars
+    backgroundColor: "white", // White background
+    titleTextStyle: { color: "black" }, // Black title
+  };
+
+  const chart = new google.visualization.ColumnChart(
+    document.getElementById("chart_div2")
+  );
+  chart.draw(dataTable, options);
+}
+
+    
       fetchAndDisplayData();
     </script>
   </body>
