@@ -1,52 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- My Own Style Sheet -->
-    <link rel="stylesheet" href="css/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
     <title>About Us</title>
-    <link rel="icon" href="images/logo_sm.png">
+    <link rel="icon" href="images/logo_sm.png" />
     <style>
-        
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+      body {
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+      }
+      h1 {
+        color: #000000;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      p {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        color: #444;
+        text-align: justify;
+        padding: 0 20px;
+        margin-bottom: 40px;
+      }
+      .team-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      .team-member {
+        text-align: center;
+        margin-bottom: 30px;
+        width: 220px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .team-member:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+      .team-member:active {
+        animation: bounce 0.3s ease;
+      }
+      .team-member img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+      }
+      .team-member h3 {
+        margin: 10px 0 5px;
+        color: #333;
+        font-size: 1.2rem;
+      }
+      .team-member p {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 5px;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        50% {
+          transform: translateY(-15px);
         }
-        h1 {
-            color: #333;
-        }
-        p {
-            line-height: 1.6;
-        }
-        .contact {
-            margin-top: 20px;
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <a href="home.html" target="blank">
-        <img class="logo" src="images/EcoSense.png" alt="EcoSense Logo">
+      <img
+        class="logo"
+        src="images/EcoSense.png"
+        alt="EcoSense Logo"
+        style="display: block; margin: 0 auto 30px"
+      />
     </a>
     <div class="container">
-        <h1>About Us</h1>
-        <p>Welcome to our project! EcoSense was a 24 hour hackathon project built by Rishi Golla, Amber Hasan, Dana Ibrahim and Caden Cochran.  EcoSense is a project focused on promoting energy efficiency and sustainability in buildings. It helps organizations and individuals monitor their energy usage and identify areas where they can reduce waste. By analyzing energy consumption data, EcoSense highlights patterns and suggests ways to optimize energy use, ultimately leading to cost savings and a reduced environmental impact. The goal is to empower users with insights to make smarter, greener choices that contribute to a more sustainable future.
-EcoSense is a project designed to help buildings use energy more efficiently. It collects data on how energy is used and shows where improvements can be made to save energy. This can help people reduce waste, save money, and lower their impact on the environment. The aim is to provide easy-to-understand insights so that everyone can make better, greener choices.
-</p>
-        <div class="contact">
-            <h2>Contact Us</h2>
-            <p>Email: info@example.com</p>
-            <p>Phone: +1-234-567-8901</p>
-        </div>
+      <h1>About Us</h1>
+      <p>
+        Welcome to EcoSense! This project was developed during a 24-hour
+        hackathon by a dedicated team consisting of Rishi Golla, Amber Hasan,
+        Dana Ibrahim, and Caden Cochran. Our mission is to leverage technology
+        to promote energy efficiency and sustainability in buildings. EcoSense
+        analyzes real-time energy consumption data to identify patterns and
+        provides actionable insights to optimize energy usage. By empowering
+        organizations and individuals to reduce waste, lower costs, and minimize
+        environmental impact, EcoSense contributes to a greener and more
+        sustainable future.
+      </p>
+
+      <!-- Team Section -->
+      <div class="team-container">
+        <!-- Amber Hasan -->
+        <a
+          href="https://www.linkedin.com/in/amberhasan/"
+          target="_blank"
+          class="team-member"
+        >
+          <img src="images/amber_picture.jpg" alt="Amber Hasan" />
+          <h3>Amber Hasan</h3>
+          <p>Data Analyst & Frontend Developer</p>
+        </a>
+
+        <!-- Caden Cochran -->
+        <a
+          href="https://www.linkedin.com/in/caden-cochran-801b17287/"
+          target="_blank"
+          class="team-member"
+        >
+          <img src="images/caden_picture.jpg" alt="Caden Cochran" />
+          <h3>Caden Cochran</h3>
+          <p>Backend Engineer</p>
+        </a>
+
+        <!-- Dana Ibrahim -->
+        <a
+          href="https://www.linkedin.com/in/dana-ibrahim-79a14032a/"
+          target="_blank"
+          class="team-member"
+        >
+          <img src="images/dana_picture.jpg" alt="Dana Ibrahim" />
+          <h3>Dana Ibrahim</h3>
+          <p>Full Stack Developer</p>
+        </a>
+
+        <!-- Rishi Golla -->
+        <a
+          href="https://www.linkedin.com/in/rishi-golla/"
+          target="_blank"
+          class="team-member"
+        >
+          <img src="images/rishi_picture.jpeg" alt="Rishi Golla" />
+          <h3>Rishi Golla</h3>
+          <p>Project Manager & DevOps Engineer</p>
+        </a>
+      </div>
     </div>
-</body>
+  </body>
 </html>
