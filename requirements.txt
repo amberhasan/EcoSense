@@ -2,3 +2,5 @@ fastapi
 uvicorn
 confluent_kafka
 pyspark
+pydantic
+kafka-python

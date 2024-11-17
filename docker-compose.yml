@@ -6,11 +6,8 @@ services:
     container_name: zookeeper
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
-      - ZOO_4LW_COMMANDS_WHITELIST=ruok, srvr, conf, isro
     ports:
       - "2181:2181"
-    volumes:
-      - zookeeper_data:/bitnami/zookeeper
 
   kafka:
     image: bitnami/kafka:latest
@@ -19,16 +16,20 @@ services:
       - KAFKA_BROKER_ID=1
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT
-      - KAFKA_LISTENERS=PLAINTEXT://:9092
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
-      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
     depends_on:
       - zookeeper
     ports:
       - "9092:9092"
-    volumes:
-      - kafka_data:/bitnami/kafka
 
-volumes:
-  zookeeper_data:
-  kafka_data:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi
+    ports:
+      - "8000:8000"
+    depends_on:
+      - kafka
