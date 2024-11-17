@@ -1,20 +1,7 @@
-# hackutd2024
+# EcoSense. 
 
-git command to commit:
+Buildings are major energy consumers, contributing to high operational costs and a substantial environmental footprint. With increasing urbanization, the demand for energy-efficient solutions is more critical than ever. Inefficient energy usage not only strains financial resources but also accelerates climate change. Implementing sustainable practices and innovative technologies can help reduce energy consumption significantly. Smart building systems and renewable energy integration are key to minimizing environmental impact while optimizing performance. By addressing these challenges, we can create a future where buildings are both cost-effective and environmentally responsible.
 
-git add .
-git commit -m "commit message"
-git push
+EcoSense is a platform designed to provide actionable insights on building energy efficiency. It uses simulated data to analyze metrics like energy consumption, efficiency scores, and optimization recommendations. The platform displays these insights through a user-friendly dashboard, helping users make data-driven decisions for improved energy management.
 
-git command to stash and get the main branch code then unstash:
-
-git fetch origin
-git stash
-git reset --hard origin/main 
-git stash pop
-
-how to run python server for graph: python3 api_server.py
-how to run server for chat: python3 chatBackend.py
-
-git fetch origin
-git rebase origin/main
+EcoSense empowers users with advanced analytics and actionable insights to reduce energy consumption and enhance operational efficiency. By leveraging real-time data and machine learning, the platform identifies inefficiencies and provides tailored recommendations to improve building sustainability. Users benefit from a user-friendly interface that simplifies monitoring and enables informed decision-making. EcoSense was developed with a mission to help organizations optimize resource usage, reduce waste, and achieve their sustainability goals. Designed for urban environments, it addresses the pressing need for energy efficiency while simultaneously lowering costs and minimizing environmental impact. Through proactive energy management, EcoSense contributes to creating smarter, greener, and more resilient buildings.
