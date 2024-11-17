@@ -1,5 +1,13 @@
 body{
     text-align: center;
+    background-color: #cefad0;
+}
+
+.logo{
+    width: 170px;
+    position: absolute;
+    top: 55px;
+    left: 10%;
 }
 
 .title {
@@ -7,10 +15,22 @@ body{
     padding: 2rem;
   }
 
-.content {
+.content{
     padding: 1rem;
-    background-color: #cefad0;
 }
+
+.bubble {
+    padding: 4rem;
+    width: 1000px;
+    height: 400px;
+    background-color: lightblue; 
+    border-radius: 50%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 
 h1 {
     font-size: 8rem;
