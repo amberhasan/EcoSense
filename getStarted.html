@@ -1,173 +1,191 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="css/styles.css" />
-
 <html lang="en">
-        <!-- My Own Style Sheet -->
-        <link rel="stylesheet" href="css/styles.css">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EcoSense - Get Started</title>
-    <link rel="icon" href="images/logo_sm.png">
-    <style>
-      body {
-        font-family: "Roboto", sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-      }
-      .container {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        background-color: #ffffff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-      }
-      h1 {
-        color: #34a853;
-        text-align: center;
-      }
-      .image-container {
-        text-align: center;
-        margin-top: 20px;
-      }
-      .data-container {
-        margin-top: 30px;
-      }
-      .building-card {
-        background-color: #d4edda;
-        margin: 10px 0;
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid #28a745;
-        color: #155724;
-      }
-      .building-card p {
-        margin: 5px 0;
-      }
-      .button-container {
-        text-align: center;
-        margin-top: 20px;
-      }
-      button {
-        padding: 10px 20px;
-        background-color: #000000;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: bold
-        transition background-color 0.3s ease;
-      }
+<!-- Bootstrap CSS and JS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
-      button:hover {
-        background-color: #000000;
-        font-weight: bold
-      }
-      .chart-container {
-        margin-top: 30px;
-        text-align: center;
-      }
-      .error-message {
-        color: red;
-        text-align: center;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoSense - Get Started</title>
+  <link rel="icon" href="images/logo_sm.png">
 
-      .eco-title {
-        color: black; /* Makes the text black */
-        font-size: 3rem; /* Adjust size to match design preference */
-        font-weight: bold; /* Gives a strong emphasis */
-        text-align: center; /* Centers the title */
-        margin: 20px 0; /* Adds spacing around the title */
-        background: none; /* Removes any bubble effect */
-        padding: 0; /* Removes padding */
-        display: inline-block; /* Prevents it from stretching unnecessarily */
-        }
+  <!-- My Own Style Sheet -->
+  <link rel="stylesheet" href="css/styles.css">
 
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
 
-    </style>
-  </head>
-  <body>
-    <a href="home.html" target="blank">
-      <img class="logo" src="images/EcoSense.png" alt="EcoSense Logo">
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h1 {
+      color: #34a853;
+      text-align: center;
+    }
+
+    .image-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .data-container {
+      margin-top: 30px;
+    }
+
+    .building-card {
+      background-color: #d4edda;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #28a745;
+      color: #155724;
+    }
+
+    .building-card p {
+      margin: 5px 0;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #000000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold transition background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #000000;
+      font-weight: bold
+    }
+
+    .chart-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .error-message {
+      color: red;
+      text-align: center;
+    }
+
+    .eco-title {
+      color: black;
+      /* Makes the text black */
+      font-size: 3rem;
+      /* Adjust size to match design preference */
+      font-weight: bold;
+      /* Gives a strong emphasis */
+      text-align: center;
+      /* Centers the title */
+      margin: 20px 0;
+      /* Adds spacing around the title */
+      background: none;
+      /* Removes any bubble effect */
+      padding: 0;
+      /* Removes padding */
+      display: inline-block;
+      /* Prevents it from stretching unnecessarily */
+    }
+  </style>
+</head>
+
+<body>
+  <a href="home.html" target="blank">
+    <img class="logo" src="images/EcoSense.png" alt="EcoSense Logo">
   </a>
-    <div class="container">
-        <h1 class="eco-title">Data Visualization</h1>
-  
-      <!-- Image Section -->
-      <div class="image-container">
-        <img
-          src="images/Energy-efficiency.jpg"
-          alt="Energy Efficiency"
-          width="100%"
-          style="max-width: 600px; border-radius: 10px"
-        />
-      </div>
+  <div class="container">
+    <h1 class="eco-title">Data Visualization</h1>
 
-      <!-- Data Display Section -->
-      <div id="data-container" class="data-container"></div>
-
-      <!-- Button to Fetch Data and Generate Charts -->
-      <div class="button-container">
-        <button onclick="fetchAndDrawCharts()">Get Energy Insights</button>
-      </div>
-
-      <!-- Containers for Google Charts -->
-      <div id="chart_div1" class="chart-container"></div>
-      <div id="chart_div2" class="chart-container"></div>
+    <!-- Image Section -->
+    <div class="image-container">
+      <img src="images/Energy-efficiency.jpg" alt="Energy Efficiency" width="100%"
+        style="max-width: 600px; border-radius: 10px" />
     </div>
 
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
-      google.charts.load("current", { packages: ["corechart"] });
+    <!-- Data Display Section -->
+    <div id="data-container" class="data-container"></div>
 
-      async function fetchAndDisplayData() {
-        const dataContainer = document.getElementById("data-container");
+    <!-- Button to Fetch Data and Generate Charts -->
+    <div class="button-container">
+      <button onclick="fetchAndDrawCharts()">Get Energy Insights</button>
+    </div>
 
-        try {
-          const response = await fetch("http://localhost:8000/graphx-insights");
-          if (!response.ok) throw new Error("Failed to fetch data");
+    <!-- Containers for Google Charts -->
+    <div id="chart_div1" class="chart-container"></div>
+    <div id="chart_div2" class="chart-container"></div>
+  </div>
 
-          const data = await response.json();
-          dataContainer.innerHTML = "";
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script>
+    google.charts.load("current", { packages: ["corechart"] });
 
-          data.forEach((item) => {
-            const div = document.createElement("div");
-            div.className = "building-card";
-            div.innerHTML = `
+    async function fetchAndDisplayData() {
+      const dataContainer = document.getElementById("data-container");
+
+      try {
+        const response = await fetch("http://localhost:8000/graphx-insights");
+        if (!response.ok) throw new Error("Failed to fetch data");
+
+        const data = await response.json();
+        dataContainer.innerHTML = "";
+
+        data.forEach((item) => {
+          const div = document.createElement("div");
+          div.className = "building-card";
+          div.innerHTML = `
               <p><strong>Building ID:</strong> ${item.building_id}</p>
               <p><strong>PageRank:</strong> ${item.pagerank.toFixed(2)}</p>
-              <p><strong>Energy Consumption:</strong> ${
-                item.energy_consumption
-              } kWh</p>
+              <p><strong>Energy Consumption:</strong> ${item.energy_consumption
+            } kWh</p>
               <p><strong>Building Type:</strong> ${item.building_type}</p>
               <p><strong>Efficiency Score:</strong> ${item.efficiency_score}</p>
               <p><strong>Recommendations:</strong> ${item.recommendations}</p>
               <hr>
             `;
-            dataContainer.appendChild(div);
-          });
-        } catch (error) {
-          console.error("Error fetching data:", error);
-          dataContainer.innerHTML =
-            "<p class='error-message'>Error loading data. Please try again later.</p>";
-        }
+          dataContainer.appendChild(div);
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        dataContainer.innerHTML =
+          "<p class='error-message'>Error loading data. Please try again later.</p>";
       }
+    }
 
-      async function fetchAndDrawCharts() {
-        try {
-          const response = await fetch("http://localhost:8000/graphx-insights");
-          if (!response.ok) throw new Error("Network response was not OK");
+    async function fetchAndDrawCharts() {
+      try {
+        const response = await fetch("http://localhost:8000/graphx-insights");
+        if (!response.ok) throw new Error("Network response was not OK");
 
-          const data = await response.json();
-          drawEnergyConsumptionChart(data);
-          drawPageRankChart(data);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
+        const data = await response.json();
+        drawEnergyConsumptionChart(data);
+        drawPageRankChart(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
+    }
 
     //   function drawEnergyConsumptionChart(data) {
     //     const formattedData = [
@@ -216,59 +234,134 @@
     //     chart.draw(dataTable, options);
     //   }
     function drawEnergyConsumptionChart(data) {
-  const formattedData = [
-    ["Building ID", "Energy Consumption (kWh)", "Efficiency Score"],
-  ];
-  data.forEach((item) => {
-    formattedData.push([
-      `Building ${item.building_id}`,
-      item.energy_consumption,
-      item.efficiency_score,
-    ]);
-  });
+      const formattedData = [
+        ["Building ID", "Energy Consumption (kWh)", "Efficiency Score"],
+      ];
+      data.forEach((item) => {
+        formattedData.push([
+          `Building ${item.building_id}`,
+          item.energy_consumption,
+          item.efficiency_score,
+        ]);
+      });
 
-  const dataTable = google.visualization.arrayToDataTable(formattedData);
-  const options = {
-    title: "Building Energy Consumption vs Efficiency",
-    hAxis: { title: "Building ID", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
-    vAxis: { title: "Metrics", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
-    legend: { position: "top", textStyle: { color: "black" } },
-    colors: ["#000000", "#555555"], // Black and dark gray for bars/lines
-    backgroundColor: "white", // White background
-    titleTextStyle: { color: "black" }, // Black title
-  };
+      const dataTable = google.visualization.arrayToDataTable(formattedData);
+      const options = {
+        title: "Building Energy Consumption vs Efficiency",
+        hAxis: { title: "Building ID", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
+        vAxis: { title: "Metrics", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
+        legend: { position: "top", textStyle: { color: "black" } },
+        colors: ["#000000", "#555555"], // Black and dark gray for bars/lines
+        backgroundColor: "white", // White background
+        titleTextStyle: { color: "black" }, // Black title
+      };
 
-  const chart = new google.visualization.ComboChart(
-    document.getElementById("chart_div1")
-  );
-  chart.draw(dataTable, options);
-}
+      const chart = new google.visualization.ComboChart(
+        document.getElementById("chart_div1")
+      );
+      chart.draw(dataTable, options);
+    }
 
-function drawPageRankChart(data) {
-  const formattedData = [["Building ID", "PageRank"]];
-  data.forEach((item) => {
-    formattedData.push([`Building ${item.building_id}`, item.pagerank]);
-  });
+    function drawPageRankChart(data) {
+      const formattedData = [["Building ID", "PageRank"]];
+      data.forEach((item) => {
+        formattedData.push([`Building ${item.building_id}`, item.pagerank]);
+      });
 
-  const dataTable = google.visualization.arrayToDataTable(formattedData);
-  const options = {
-    title: "Building PageRank Analysis",
-    hAxis: { title: "Building ID", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
-    vAxis: { title: "PageRank", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
-    legend: { position: "none" },
-    colors: ["#000000"], // Black for bars
-    backgroundColor: "white", // White background
-    titleTextStyle: { color: "black" }, // Black title
-  };
+      const dataTable = google.visualization.arrayToDataTable(formattedData);
+      const options = {
+        title: "Building PageRank Analysis",
+        hAxis: { title: "Building ID", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
+        vAxis: { title: "PageRank", textStyle: { color: "black" }, titleTextStyle: { color: "black" } },
+        legend: { position: "none" },
+        colors: ["#000000"], // Black for bars
+        backgroundColor: "white", // White background
+        titleTextStyle: { color: "black" }, // Black title
+      };
 
-  const chart = new google.visualization.ColumnChart(
-    document.getElementById("chart_div2")
-  );
-  chart.draw(dataTable, options);
-}
+      const chart = new google.visualization.ColumnChart(
+        document.getElementById("chart_div2")
+      );
+      chart.draw(dataTable, options);
+    }
 
-    
-      fetchAndDisplayData();
-    </script>
-  </body>
+
+    fetchAndDisplayData();
+  </script>
+
+  <div class="card position-fixed bottom-0 end-0 m-3 chatbot-card">
+    <div class="card-body d-flex align-items-center">
+      <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+        style="padding: 0; margin: 0; border: none;">
+        <img class="logo_sm" src="images/logo_sm.png" alt="Small EcoSense Logo">
+      </button>
+      <span
+        style="margin-left: 8px; font-size: 1rem; font-weight: bold; color: #000000; font-family: 'Roboto', sans-serif;">
+        Chatbot
+      </span>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Chatbot</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p style="font-size: 1.2rem; color: #555;">Hello! I am here to assist you. Feel free to ask anything!</p>
+      <div class="suggested-questions">
+        <p>Quick Questions:</p>
+        <button class="btn btn-outline-primary">How does EcoSense work?</button>
+        <button class="btn btn-outline-primary">Energy-saving tips</button>
+      </div>
+      <input type="text" class="chatMessage" name="yourMessage" placeholder="Type your message...">
+    </div>
+  </div>
+
+  <script>
+    document.querySelector(".chatMessage").addEventListener("keydown", async (e) => {
+      if (e.key === "Enter") {
+        const userMessage = e.target.value; // Get the user's input
+        e.target.value = ""; // Clear the input box
+
+        // Display the user's message in the chat (optional)
+        const chatBody = document.querySelector(".offcanvas-body");
+        const userBubble = document.createElement("div");
+        userBubble.textContent = userMessage;
+        userBubble.style.color = "blue";
+        chatBody.appendChild(userBubble);
+
+        try {
+          // Send user message to the backend
+          const response = await fetch("http://127.0.0.1:5000/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: userMessage })
+          });
+
+          const data = await response.json();
+
+          // Display the assistant's reply
+          const botBubble = document.createElement("div");
+          botBubble.textContent = data.reply || "Something went wrong!";
+          botBubble.style.color = "green";
+          chatBody.appendChild(botBubble);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+    });
+
+    document.querySelectorAll(".suggested-questions button").forEach(button => {
+      button.addEventListener("click", () => {
+        const chatInput = document.querySelector(".chatMessage");
+        chatInput.value = button.textContent; // Prefill input with the button text
+        chatInput.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" })); // Simulate Enter key
+      });
+    });
+
+  </script>
+
+</body>
+
 </html>
