@@ -13,4 +13,5 @@ git reset --hard origin/main
 git stash
 git stash pop
 
-how to run python server: python3 api_server.py
+how to run python server for graph: python3 api_server.py
+how to run server for chat: python3 chatBackend.py
