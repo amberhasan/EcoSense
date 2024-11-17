@@ -18,6 +18,7 @@
         padding: 20px;
         background-color: #fff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
       }
 
       h1 {
@@ -27,14 +28,11 @@
 
       p {
         line-height: 1.6;
+        text-align: center;
       }
 
       .button-container {
         text-align: center;
-        margin-top: 20px;
-      }
-
-      .contact {
         margin-top: 20px;
       }
 
@@ -45,6 +43,7 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        font-size: 1rem;
       }
 
       button:hover {
@@ -63,10 +62,22 @@
         margin: 10px 0;
         padding: 15px;
         border-radius: 5px;
+        border: 1px solid #007bff;
       }
 
       .building-card p {
         margin: 5px 0;
+      }
+
+      .error-message {
+        color: red;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .loading-message {
+        text-align: center;
+        font-style: italic;
       }
     </style>
   </head>
@@ -82,23 +93,6 @@
         a greener future.
       </p>
 
-      <!-- About Us Section -->
-      <h2>About Us</h2>
-      <p>
-        We are dedicated to providing the best service possible. Our team is
-        passionate about what we do, and we strive to exceed your expectations.
-      </p>
-      <p>
-        Our mission is to create value for our customers through innovation and
-        excellence. We believe in building long-term relationships based on
-        trust and integrity.
-      </p>
-      <div class="contact">
-        <h3>Contact Us</h3>
-        <p>Email: info@example.com</p>
-        <p>Phone: +1-234-567-8901</p>
-      </div>
-
       <!-- Button to Fetch Graph Data -->
       <div class="button-container">
         <button onclick="fetchGraphData()">Get Energy Insights</button>
@@ -111,25 +105,46 @@
     <!-- JavaScript to Fetch Data from FastAPI -->
     <script>
       async function fetchGraphData() {
+        const container = document.getElementById("data-container");
+        container.innerHTML = "<p class='loading-message'>Loading data...</p>";
+
         try {
           // Fetch data from the FastAPI endpoint
           const response = await fetch("http://localhost:8000/graphx-insights");
+
+          // Check if the response is OK
+          if (!response.ok) {
+            throw new Error(
+              `Network response was not OK: ${response.statusText}`
+            );
+          }
+
           const data = await response.json();
 
-          const container = document.getElementById("data-container");
-          container.innerHTML = ""; // Clear previous content
+          // Clear the container before displaying new data
+          container.innerHTML = "";
 
-          if (data.length > 0) {
+          if (data && data.length > 0) {
+            // Loop through each item and display it
             data.forEach((item) => {
               const div = document.createElement("div");
               div.className = "building-card";
               div.innerHTML = `
-                            <p><strong>Building ID:</strong> ${item.id}</p>
-                            <p><strong>PageRank:</strong> ${item.pagerank.toFixed(
-                              2
-                            )}</p>
-                            <hr>
-                        `;
+                <p><strong>Building ID:</strong> ${item.building_id}</p>
+                <p><strong>PageRank:</strong> ${item.pagerank.toFixed(2)}</p>
+                <p><strong>Energy Consumption:</strong> ${
+                  item.energy_consumption
+                } kWh</p>
+                <p><strong>Building Type:</strong> ${item.building_type}</p>
+                <p><strong>Efficiency Score:</strong> ${
+                  item.efficiency_score
+                }</p>
+                <p><strong>Recommendations:</strong> ${item.recommendations}</p>
+                <p><strong>Last Updated:</strong> ${new Date(
+                  item.last_updated
+                ).toLocaleString()}</p>
+                <hr>
+              `;
               container.appendChild(div);
             });
           } else {
@@ -137,8 +152,8 @@
           }
         } catch (error) {
           console.error("Error fetching data:", error);
-          document.getElementById("data-container").innerHTML =
-            "<p>Error loading data. Please try again later.</p>";
+          container.innerHTML =
+            "<p class='error-message'>Error loading data. Please try again later.</p>";
         }
       }
     </script>
