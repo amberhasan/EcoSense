@@ -67,6 +67,41 @@
         </div>
     </div>
 
+    <script>
+        document.querySelector(".chatMessage").addEventListener("keydown", async (e) => {
+            if (e.key === "Enter") {
+                const userMessage = e.target.value; // Get the user's input
+                e.target.value = ""; // Clear the input box
+    
+                // Display the user's message in the chat (optional)
+                const chatBody = document.querySelector(".offcanvas-body");
+                const userBubble = document.createElement("div");
+                userBubble.textContent = userMessage;
+                userBubble.style.color = "blue";
+                chatBody.appendChild(userBubble);
+    
+                try {
+                    // Send user message to the backend
+                    const response = await fetch("http://127.0.0.1:5000/chat", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ message: userMessage })
+                    });
+    
+                    const data = await response.json();
+    
+                    // Display the assistant's reply
+                    const botBubble = document.createElement("div");
+                    botBubble.textContent = data.reply || "Something went wrong!";
+                    botBubble.style.color = "green";
+                    chatBody.appendChild(botBubble);
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            }
+        });
+    </script>
+    
 
 </body>
 
