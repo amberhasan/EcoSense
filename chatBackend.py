@@ -26,7 +26,7 @@ def chat():
         response = client.chat.completions.create(
             model='Meta-Llama-3.1-8B-Instruct',
             messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "system", "content": "You are a helpful assistant. Answer in 200 characters or less."},
                 {"role": "user", "content": user_message}
             ],
             temperature=0.1,
