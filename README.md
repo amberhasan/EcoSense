@@ -15,3 +15,6 @@ git stash pop
 
 how to run python server for graph: python3 api_server.py
 how to run server for chat: python3 chatBackend.py
+
+git fetch origin
+git rebase origin/main

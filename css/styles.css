@@ -125,9 +125,32 @@ h3 {
   font-size: 30px;
   }
 
+.offcanvas-body {
+    padding-bottom: 60px;
+}
+
 .chatMessage {
     position: absolute;
     width: 350px;
-    bottom: 50px;
+    bottom: 25px;
     right: 20px;
+}
+
+/* Transparent button for the chat box */
+.card-body button {
+  padding: 0;
+  margin: 0;
+  border: none;  /* Remove any border */
+  background-color: transparent; /* Make the button background transparent */
+  box-shadow: none;  /* Remove any shadow (if any) */
+}
+
+.card-body button:hover {
+  opacity: 0.8;  /* Add a subtle effect when hovering over the button */
+  cursor: pointer;  /* Change the cursor to a pointer to indicate it's clickable */
+}
+
+.card-body {
+  position: relative;
+  display: inline-block;
 }
