@@ -28,6 +28,7 @@ body{
     display: inline-flex; /* Ensures it wraps tightly around the image */
     align-items: center;
     justify-content: center;
+    background-color: transparent;
 }
 
 .card-body{
@@ -52,15 +53,15 @@ body{
 }
 
 .bubble {
-    padding: 4rem;
-    width: 700px;
-    height: 350px;
+    padding: 2rem;
+    width: 625px;
+    height: 300px;
     background-color: rgb(254, 254, 254); 
     border-radius: 8%;
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1rem;
+
     margin-bottom: 1rem;
     font-family: 'Roboto', sans-serif;
     border: 2px solid #000000;
@@ -71,6 +72,13 @@ body{
   background-color: #000000;  /* Choose your preferred color */
   font-weight: bold; 
   border: none;               /* Remove the border */
+}
+
+.btn-lg {
+    width: 250px;
+    height: 75px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 h1 {
@@ -98,22 +106,23 @@ h3 {
 }
 
 .bottom-container {
-    background-color: #eff5f0;
+    background-color: #000000;
     padding: 50px;
   }
 
 .copyright {
-  color: #000000;
+  color: #ffffff;
   margin-top: 20px;
   font-size: 0.75rem;
   }
   
 .footer-link {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   margin-right: 25px;
   margin-left: 25px;
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
+  font-size: 30px;
   }
 
 .chatMessage {
